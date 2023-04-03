@@ -2,7 +2,6 @@
 
   [![Paper][paper-shield]][paper-url]
   [![MIT License][license-shield]][license-url]
-  [![Lint][lint-shield]][lint-url]
   [![Build][build-shield]][build-url]
 
   <h1 align="center">Gaussian Process Self-Distillation (GPSD)</h1>
