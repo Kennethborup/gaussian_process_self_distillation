@@ -5,20 +5,19 @@
   [![Lint][lint-shield]][lint-url]
   [![Build][build-shield]][build-url]
 
-  <h2 align="center">Gaussian Process Self-Distillation (GPSD)</h2>
+  <h1 align="center">Gaussian Process Self-Distillation (GPSD)</h1>
 
   <p align="center">
     Self-distillation for Gaussian Process Regression and Gaussian Process Classification.
-    <br />
-
-    [Read the Paper»][paper-url]
   </p>
+  <a href="https://scholar.google.com/citations?user=KsFyMREAAAAJ&hl=en">Read the Paper»</a>
 </div>
+
 
 
 ## About The Project
 
-This is the official implementation of the paper [Self-Distillation for Gaussian Processes][paper-url] by Kenneth Borup and Lars N. Andersen.
+This is the official implementation of the paper [Self-Distillation for Gaussian Processes][paper-url] by [Kenneth Borup][linkedin-url] and Lars N. Andersen.
 
 ```bibtex
 @article{borup2023GPSD,
@@ -170,3 +169,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [lint-url]: https://github.com/Kennethborup/gaussian_process_self_distillation
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[linkedin-url]: https://www.linkedin.com/in/borupkenneth/
