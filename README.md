@@ -163,7 +163,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [paper-shield]: https://img.shields.io/badge/ArXiv-Paper-red?style=for-the-badge
 [paper-url]: https://scholar.google.com/citations?user=KsFyMREAAAAJ&hl=en
 [training-speed-image]: figures/training_time_relative.png
-[build-shield]: https://img.shields.io/github/actions/workflow/status/kennethborup/gaussian_process_self_distillation/build?style=for-the-badge
+[build-shield]: https://img.shields.io/github/actions/workflow/status/kennethborup/gaussian_process_self_distillation/build.yml?style=for-the-badge
 [build-url]: https://github.com/Kennethborup/gaussian_process_self_distillation
 [lint-shield]: https://img.shields.io/github/checks-status/kennethborup/gaussian_process_self_distillation/main?style=for-the-badge
 [lint-url]: https://github.com/Kennethborup/gaussian_process_self_distillation
