@@ -9,7 +9,7 @@
   <p align="center">
     Self-distillation for Gaussian Process Regression and Gaussian Process Classification.
   </p>
-  <a href="https://scholar.google.com/citations?user=KsFyMREAAAAJ&hl=en">Read the Paper»</a>
+  <a href="https://arxiv.org/abs/2304.02641">Read the Paper»</a>
 </div>
 
 
@@ -19,10 +19,12 @@
 This is the official implementation of the paper [Self-Distillation for Gaussian Processes][paper-url] by [Kenneth Borup][linkedin-url] and Lars N. Andersen.
 
 ```bibtex
-@article{borup2023GPSD,
-  title={Self-Distillation for Gaussian Processes},
-  author={Borup, Kenneth and Andersen, Lars N.},
-  year={2023},
+@misc{borup2023selfdistillation,
+      title={Self-Distillation for Gaussian Process Regression and Classification}, 
+      author={Kenneth Borup and Lars Nørvang Andersen},
+      year={2023},
+      eprint={2304.02641},
+      archivePrefix={arXiv}
 }
 ```
 
@@ -145,10 +147,12 @@ Note, the training speed of different methods vary a lot (especially for large n
 If you use this code in your research, please cite the following paper:
 
 ```bibtex
-@article{borup2023GPSD,
-  title={Self-Distillation for Gaussian Processes},
-  author={Borup, Kenneth and Andersen, Lars N.},
-  year={2023},
+@misc{borup2023selfdistillation,
+      title={Self-Distillation for Gaussian Process Regression and Classification}, 
+      author={Kenneth Borup and Lars Nørvang Andersen},
+      year={2023},
+      eprint={2304.02641},
+      archivePrefix={arXiv}
 }
 ```
 
@@ -160,7 +164,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [paper-shield]: https://img.shields.io/badge/ArXiv-Paper-red?style=for-the-badge
-[paper-url]: https://scholar.google.com/citations?user=KsFyMREAAAAJ&hl=en
+[paper-url]: https://arxiv.org/abs/2304.02641
 [training-speed-image]: figures/training_time_relative.png
 [build-shield]: https://img.shields.io/github/actions/workflow/status/kennethborup/gaussian_process_self_distillation/build.yml?style=for-the-badge
 [build-url]: https://github.com/Kennethborup/gaussian_process_self_distillation
