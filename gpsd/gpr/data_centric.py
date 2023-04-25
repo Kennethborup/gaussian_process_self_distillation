@@ -104,7 +104,7 @@ class DataCentricGPR(GaussianProcessRegressor):
         num_distillations=2,
         fit_mode="efficient",
         optimize_mode=None,
-        compute_L_=False,
+        compute_L_=True,
     ):
         self.kernel_orig = (
             kernel.clone_with_theta(kernel.theta) if kernel is not None else kernel
@@ -175,6 +175,18 @@ class DataCentricGPR(GaussianProcessRegressor):
     #     self._main_fit(X, y)
 
     def fit(self, X, y):
+        # Check formatting of alphas
+        self.alphas = (
+            self.alphas if isinstance(self.alphas, (list, tuple)) else [self.alphas]
+        )
+        if self.num_distillations != len(self.alphas):
+            if len(self.alphas) == 1:
+                self.alphas = self.alphas * self.num_distillations
+            else:
+                raise ValueError(
+                    "Number of alphas must be equal to num_distillations or a single value."
+                )
+
         if self.fit_mode == "naive":
             for i in range(
                 self.num_distillations
@@ -446,7 +458,7 @@ class DataCentricGPR(GaussianProcessRegressor):
                 y_cov = self.kernel_(X) - V.T @ V
 
                 # undo normalisation
-                y_cov = np.outer(y_cov, self._y_train_std**2).reshape(
+                y_cov = np.outer(y_cov, self._y_train_std ** 2).reshape(
                     *y_cov.shape, -1
                 )
                 # if y_cov has shape (n_samples, n_samples, 1), reshape to
@@ -473,7 +485,7 @@ class DataCentricGPR(GaussianProcessRegressor):
                     y_var[y_var_negative] = 0.0
 
                 # undo normalisation
-                y_var = np.outer(y_var, self._y_train_std**2).reshape(
+                y_var = np.outer(y_var, self._y_train_std ** 2).reshape(
                     *y_var.shape, -1
                 )
 
