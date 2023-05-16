@@ -22,7 +22,7 @@ class DistributionCentricGPC(GaussianProcessClassifier):
         assert self.num_distillations > 0, "num_distillations must be greater than 0"
 
         if self.fit_mode == "approx":
-            distill_kernel = C(
+            kernel = C(
                 self.num_distillations, constant_value_bounds="fixed"
             ) * kernel.clone_with_theta(kernel.theta)
         elif self.fit_mode == "exact":
@@ -30,7 +30,7 @@ class DistributionCentricGPC(GaussianProcessClassifier):
             # distill_kernel = kernel.clone_with_theta(kernel.theta)
 
         super().__init__(
-            kernel=distill_kernel,
+            kernel=kernel,
             optimizer=optimizer,
             n_restarts_optimizer=n_restarts_optimizer,
             max_iter_predict=max_iter_predict,
