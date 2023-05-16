@@ -32,13 +32,13 @@ class ContinuousBernoulli:
         elif order == 2:
             derivative[~non_zero_mask] = 1.0 / 6
             non_zero_logits = logits[non_zero_mask]
-            derivative[non_zero_mask] = -1 / non_zero_logits**2 + 1 / (
+            derivative[non_zero_mask] = -1 / non_zero_logits ** 2 + 1 / (
                 np.tanh(non_zero_logits) * np.sinh(non_zero_logits)
             )
         elif order == 3:
             derivative[~non_zero_mask] = 0
             non_zero_logits = logits[non_zero_mask]
-            derivative[non_zero_mask] = 2 / non_zero_logits**3 - (
+            derivative[non_zero_mask] = 2 / non_zero_logits ** 3 - (
                 1 + np.cosh(non_zero_logits) ** 2
             ) / (np.sinh(non_zero_logits) ** 3)
         else:
@@ -420,7 +420,7 @@ class _ContinuousBinaryGaussianProcessClassifierLaplace(
         gamma = LAMBDAS * f_star
         integrals = (
             np.sqrt(np.pi / alpha)
-            * erf(gamma * np.sqrt(alpha / (alpha + LAMBDAS**2)))
+            * erf(gamma * np.sqrt(alpha / (alpha + LAMBDAS ** 2)))
             / (2 * np.sqrt(var_f_star * 2 * np.pi))
         )
         pi_star = (COEFS * integrals).sum(axis=0) + 0.5 * COEFS.sum()

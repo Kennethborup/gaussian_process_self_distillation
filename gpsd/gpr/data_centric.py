@@ -175,12 +175,12 @@ class DataCentricGPR(GaussianProcessRegressor):
 
     def fit(self, X, y):
         # Check formatting of alphas
-        self.alphas = (
+        self.alphas_ = (
             self.alphas if isinstance(self.alphas, (list, tuple)) else [self.alphas]
         )
-        if self.num_distillations != len(self.alphas):
-            if len(self.alphas) == 1:
-                self.alphas = self.alphas * self.num_distillations
+        if self.num_distillations != len(self.alphas_):
+            if len(self.alphas_) == 1:
+                self.alphas_ = self.alphas_ * self.num_distillations
             else:
                 raise ValueError(
                     "Number of alphas must be equal to num_distillations or a single value."
@@ -194,13 +194,13 @@ class DataCentricGPR(GaussianProcessRegressor):
                     self.main_kwargs.update({"optimizer": None})
                     super().__init__(
                         kernel=self.kernel_.clone_with_theta(self.kernel_.theta),
-                        alpha=self.alphas[i],
+                        alpha=self.alphas_[i],
                         **self.main_kwargs,
                     )  # Initialize GPR
                 else:
                     super().__init__(
                         kernel=self.kernel.clone_with_theta(self.kernel.theta),
-                        alpha=self.alphas[i],
+                        alpha=self.alphas_[i],
                         **self.main_kwargs,
                     )  # Initialize GPR
                 super().fit(X, y)  # Train a GPR on current data
@@ -211,14 +211,14 @@ class DataCentricGPR(GaussianProcessRegressor):
         elif self.fit_mode == "efficient":
             super().__init__(
                 kernel=self.kernel.clone_with_theta(self.kernel.theta),
-                alpha=self.alphas[0],
+                alpha=self.alphas_[0],
                 **self.main_kwargs,
             )  # Initialize GPR
             self._main_fit(X, y)  # Train a GPR on current data
             for i in range(
                 1, self.num_distillations
             ):  # Perform self-distillation iterations
-                a_step_ = self.d_ / (self.d_ + self.alphas[i])
+                a_step_ = self.d_ / (self.d_ + self.alphas_[i])
                 A_step_ = np.diag(self.a_)
 
                 self.a_ *= a_step_

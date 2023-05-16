@@ -1,7 +1,7 @@
+import inspect
+
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor
-
-import inspect
 
 
 def clean_kwargs(func, kwargs):
