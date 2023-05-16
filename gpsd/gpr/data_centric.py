@@ -113,14 +113,7 @@ class DataCentricGPR(GaussianProcessRegressor):
         if self.num_distillations < 1:
             raise ValueError("Number of distillation steps must be at least 1.")
 
-        self.alphas = alphas if isinstance(alphas, (list, tuple)) else [alphas]
-        if self.num_distillations != len(self.alphas):
-            if len(self.alphas) == 1:
-                self.alphas = self.alphas * self.num_distillations
-            else:
-                raise ValueError(
-                    "Number of alphas must be equal to num_distillations or a single value."
-                )
+        self.alphas = alphas
 
         self.fit_mode = fit_mode
         if self.fit_mode == "efficient" and self.num_distillations == 1:
@@ -168,7 +161,13 @@ class DataCentricGPR(GaussianProcessRegressor):
             "copy_X_train": copy_X_train,
             "random_state": random_state,
         }
-        super().__init__(kernel, alpha=self.alphas[0], **self.main_kwargs)
+        super().__init__(
+            kernel,
+            alpha=self.alphas[0]
+            if isinstance(self.alphas, (list, tuple))
+            else self.alphas,
+            **self.main_kwargs,
+        )
         self.compute_L_ = compute_L_
 
     # def fit(self, X, y):
